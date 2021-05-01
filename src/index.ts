@@ -1,4 +1,5 @@
 import type { buttonType } from "./types"
+import { buttonText } from "./enum"
 import buttons from "./buttons"
 function createElement(labelName: string, attribute?: { [key: string]: string | undefined}) {
   const el: any = document.createElement(labelName)
@@ -24,20 +25,24 @@ output.appendChild(span)
 container.appendChild(output)
 
 container.addEventListener('click', (event: MouseEvent) => {
-  console.log('event.target')
-  console.log(event.target)
   if(event.target instanceof HTMLButtonElement) {
     const text = event.target.textContent;
     const el = event.target
-    console.log("el.getAttribute('data-name')")
-    console.log(el.getAttribute('data-name'))
+    const name = el.getAttribute('data-name')
+    console.log("name")
+    console.log(name)
+    if(el.getAttribute('data-name') === buttonText.add) {
+      console.log('添加按钮')
+    }
     if ('0123456789'.indexOf(text) >= 0) {
       if (mark) {
         afterNumber = text
       } else {
         beforeNumber = text
       }
-    } else if( [].indexOf(text))
+    } else if( [].indexOf(text)) {
+
+    }
   }
 })
 
