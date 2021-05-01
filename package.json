@@ -1,0 +1,20 @@
+{
+  "name": "ts-calculator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ts-loader": "^9.1.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}

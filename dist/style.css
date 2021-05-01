@@ -1,0 +1,44 @@
+#container {
+  display: inline-block;
+}
+button {
+  margin: 0;
+  padding: 0;
+}
+.button {
+  cursor: pointer;
+  width: 80px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
+  background-color: #fafafa;
+  border: 1px solid #e6e6e6;
+}
+
+.button[data-type="operator"] {
+  background-color: #f0f0f0;
+}
+.button:hover {
+  background-color: #d1d1d1;
+}
+.button.text-equal:hover {
+  background-color: #8abae0;
+}
+.button.text-clear {
+  width: 240px;
+}
+.button.text-0 {
+  width: 160px;
+}
+
+.output {
+  height: 120px;
+  border: 1px solid #e6e6e6;
+  position: relative;
+}
+.output-span {
+  position: absolute;
+  right: 6px;
+  bottom: 2px;
+  font-size: 36px;
+}
