@@ -1,6 +1,6 @@
-type buttonType = {
+type buttonObject = {
   name: string,
   type: string,
   text: string
 }
-export type { buttonType };
+export type { buttonObject };

@@ -1,9 +1,9 @@
-import type { buttonType } from "./types"
+import type { buttonObject } from "./types"
 import { buttonText } from "./enum"
 
-const createData = (name: string, type: string = 'number', text: string = name): buttonType => ({ name, type, text })
+const createData = (name: string, type: string = 'number', text: string = name): buttonObject => ({ name, type, text })
 
-const buttons: Array<Array<buttonType>> = [
+const buttons: Array<Array<buttonObject>> = [
   [
     createData(buttonText.clear, 'operator', 'Clear'),
     createData(buttonText.divide, 'operator', '÷'),
