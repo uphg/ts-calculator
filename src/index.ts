@@ -1,10 +1,11 @@
 import type { buttonObject } from './types';
 import { buttonText } from './enum';
 import buttons from './buttons';
+type recordType = "last" | "first"
 
 class Calculator {
-  public beforeNumber: string = ''
-  public afterNumber: string = ''
+  public first: string = ''
+  public last: string = ''
   public mark: string =''
   public buttons = buttons
   public container: HTMLDivElement
@@ -21,7 +22,7 @@ class Calculator {
     this.createContainer()
     this.bindEvents()
   }
-  // 过滤末尾的 0
+  // 处理计算，支持小数点后12位以内
   filterZero(text: number) {
     const result = text.toPrecision(12).toString()
     return Number(result)
@@ -54,32 +55,35 @@ class Calculator {
   // 存储数字
   saveNumber(text: string) {
     if (this.mark) {
-      if(text === '.' && !this.afterNumber) { this.afterNumber = '0' }
-      this.afterNumber += text
-      this.span.textContent = this.afterNumber
+      this.recordNumber('last', text)
     } else {
-      if(text === '.' && !this.beforeNumber) { this.beforeNumber = '0' }
-      this.beforeNumber += text
-      this.span.textContent = this.beforeNumber
+      this.recordNumber('first', text)
     }
+  }
+  // 累计数字位数
+  recordNumber(name: recordType, text: string) {
+    if (text === '.' && !this[name]) { this[name] = '0' }
+    this[name] += text
+    this.span.textContent = this[name]
   }
   // 计算结果
   calcResult() {
     if(!this.mark) {
       return false
     }
-    const n1 = parseFloat(this.beforeNumber) || 0
-    const n2 = parseFloat(this.afterNumber) || 0
+    const n1 = parseFloat(this.first) || 0
+    const n2 = parseFloat(this.last) || 0
     const result = this.countMap[this.mark](n1, n2).toString()
     this.span.textContent = result
+    this.first = result
 
-    this.beforeNumber = result
-    this.afterNumber = ''
+    this.last = ''
     this.mark = ''
   }
+  // 清空数据
   clearData() {
-    this.afterNumber = ''
-    this.beforeNumber = ''
+    this.last = ''
+    this.first = ''
     this.mark = ''
     this.span.textContent = '0'
   }
